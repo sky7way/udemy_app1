@@ -1,17 +1,28 @@
-const lines = 5;
-let result = '';
+function getTimeFromMinutes(getMinutes) {
+    if(getMinutes < 0){
+        return `Ошибка, проверьте данные`;
+    }
+    
+    let hour = Math.floor(getMinutes / 60);
+    let minutes = getMinutes % 60;
+    let str = '';
+    
+    switch (hour) {
+        case 0:
+            str = 'часов'
+            break;
+        case 1:
+            str = 'час'
+            break;
+        case 2:
+        case 3:
+        case 4:
+            str = 'часa'
+            break;
+        default:
+            hoursStr = 'часов';
+    }
+    return `Это ${hour} ${str} и ${minutes} минут`
+}
 
-for (let i = 1; i <= lines + 1; i++) {
-// добавляем пробелы перед звездочками
-for (let k = 0; k < lines - i; k++) {
-result += ' ';
-}
-// добавляем звездочки
-for (let j = 0; j < 2 * i - 1; j++) {
-result += '*';
-}
-// добавляем перенос строки
-result += '\n';
-}
-
-console.log(result);
+console.log(getTimeFromMinutes(150));
